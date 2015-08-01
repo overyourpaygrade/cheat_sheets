@@ -18,9 +18,9 @@
 * User Assist (Followed by a GUID, Names are Rot13 "encrypted")
 	* HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
 * Start up Locations
-	*HKLM\SOftware\Microsoft\Windows\CurrentVersion\Runonce
-	*HKLM\SOftware\Microsoft\Windows\CurrentVersion\policies\Explorer\Run
-	*HKLM\SOftware\Microsoft\Windows\CurrentVersion\Run
-	*HKCU\SOftware\Microsoft\Windows NT\CurrentVersion\Windows\Run
-	*HKCU\SOftware\Microsoft\Windows\CurrentVersion\Run
-	*HKCU\SOftware\Microsoft\Windows\CurrentVersion\RunOnce
+	* HKLM\SOftware\Microsoft\Windows\CurrentVersion\Runonce
+	* HKLM\SOftware\Microsoft\Windows\CurrentVersion\policies\Explorer\Run
+	* HKLM\SOftware\Microsoft\Windows\CurrentVersion\Run
+	* HKCU\SOftware\Microsoft\Windows NT\CurrentVersion\Windows\Run
+	* HKCU\SOftware\Microsoft\Windows\CurrentVersion\Run
+	* HKCU\SOftware\Microsoft\Windows\CurrentVersion\RunOnce
