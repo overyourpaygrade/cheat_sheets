@@ -8,3 +8,10 @@
 ###### From run or cmd. Run command and then disappear
 * start cmd.exe /c ping 8.8.8.8
 * cmd /c ping 8.8.8.8
+
+###### Query a registry key
+* reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
+
+###### Command History
+* reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+* doskey /history
