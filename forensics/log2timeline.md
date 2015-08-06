@@ -12,3 +12,6 @@
 
 ###### Office 2010 Files
 * log2timeline -z EDT5EST -f oxml doc.docx > timeline.csv 
+
+###### Parse a pcap file
+* log2timeline -z EST5EDT -f pcap ssh.pcap > timeline.csv
