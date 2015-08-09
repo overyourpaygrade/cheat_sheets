@@ -20,3 +20,8 @@
 ##### Snort
 ###### Analyze a pcap file
 * snort -r suspicious.pcap -l ./snort_output -c /etc/snort/snort.conf
+
+#### Webmail
+##### libpff (pffexport)
+###### Extract quiet, output format all, export all (alloc, orphan, recovered)
+* pffexport -q -f all -m all outlook.pst
