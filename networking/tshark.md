@@ -9,3 +9,7 @@
 
 ###### Export as pdml
 * tshark.exe -r evidence03.pcap -T pdml
+
+###### Search PCAP for Zip Files
+* tshark  -Y "http matches \"\x50\x4B\x03\x04\"" -r with_zip.pcap -x
+* tshark  -Y "http contains "50:4B:03:04"" -r with_png.pcap
