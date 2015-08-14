@@ -3,10 +3,6 @@
 ###### Grab all supported file types
 * foremost -t all file.raw
 
-##### bulk_extractor
-###### Scan an image (mem/partition/etc) and create analysis and carves
-* bulk_extractor -o output_dir memory
-
 ##### dd (Windows)
 ###### Image a Shadow Copy
 * dd.exe if=\\.\\HarddiskVolumeShadowCopy4 of=F:\snapshot4.img --localwrt
