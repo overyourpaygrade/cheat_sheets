@@ -26,3 +26,8 @@
 ##### libpff (pffexport)
 ###### Extract quiet, output format all, export all (alloc, orphan, recovered)
 * pffexport -q -f all -m all outlook.pst
+
+#### Misc
+##### Other
+###### ASCII to HEX
+* echo -n JFIF | xxd -p
