@@ -1,3 +1,15 @@
+###### Establish a session
+* net use \\[target]
+
+###### Connect as another user
+* net use \\[targetIP]\[sharename] [password] /u:[UserName]
+
+###### List shares
+* net view \\[targetIP]
+
+###### Null Session
+* net use \\[targetIP] "" /u:""
+
 ###### Create an admin level account
 * net user /add [user] [password]
 * net localgroup administrators /add [user]
