@@ -9,6 +9,9 @@
 
 ###### Combine options
 * enum -UGP [target]
+ 
+###### List all shares (including admin)
+* enum -S [target]
 
 ###### Dictionary attack against target
 * enum -D -u [user] -f [wordfile] [target]
