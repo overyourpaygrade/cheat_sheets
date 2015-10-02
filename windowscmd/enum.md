@@ -15,3 +15,6 @@
 
 ###### Dictionary attack against target
 * enum -D -u [user] -f [wordfile] [target]
+
+###### Connect to a target (default is NULL SMB session)
+* enum -u [UserName] -p [password] -G [target]
