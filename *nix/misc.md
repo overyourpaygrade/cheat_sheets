@@ -16,7 +16,7 @@
 ###### Copy (sync and archive, preserve properties), verbose with progress. Drop in dir2
 * rsynv -avP dir/ dir2
 
-##### For my.profile or bash.profile
+#### For my.profile or bash.profile
 ###### Avoid duplicates
 * export HISTCONTROL=ignoredups:erasedups 
 
