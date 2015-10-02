@@ -19,9 +19,13 @@
 ##### For my.profile or bash.profile
 ###### Avoid duplicates
 * export HISTCONTROL=ignoredups:erasedups 
-###### When the shell exits, append to the history file instead of overwriting it
 
+###### When the shell exits, append to the history file instead of overwriting it
 * shopt -s histappend
-* 
+ 
 ###### After each command, append to the history file and reread it
 * export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
+###### history bash
+* export PROMPT_COMMAND='history -a'
+
