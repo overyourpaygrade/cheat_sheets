@@ -13,7 +13,7 @@
 ###### List all shares (including admin)
 * enum -S [target]
 
-###### Dictionary attack against target
+###### Dictionary attack against target (will lock out non-admin account [policy])
 * enum -D -u [user] -f [wordfile] [target]
 
 ###### Connect to a target (default is NULL SMB session)
