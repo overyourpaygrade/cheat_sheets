@@ -81,3 +81,6 @@
 * find ~ -size 100M
 
 [Resource](http://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/)
+
+###### Find and ignore unreadable directories
+* find . ! -readable -prune
