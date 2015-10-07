@@ -11,3 +11,12 @@
 * :%s/foo/bar/g
 * flags: g - all matches, i - case insensitive, c - confirm each match
 * :%s/foo/bar/gic
+
+###### Go to the particular pattern’s line inside the file,
+* vim +/install README
+
+###### Go to the particular pattern’s line inside the file,
+* vim +?bug README
+
+###### Go to the Nth line of the file after opening it.
+* vim +10 /etc/passwd
