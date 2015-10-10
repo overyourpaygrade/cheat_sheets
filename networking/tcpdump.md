@@ -40,4 +40,10 @@
 ###### tcpdump Filter Packets – Capture all the packets other than arp and rarp
 * tcpdump -i eth0 not arp and not rarp
 
-[Source](http://www.thegeekstuff.com/2010/08/tcpdump-command-examples/)
+###### Identify available interfaces
+* tcpdump -D
+ 
+###### Do not resolve names
+* tcpdump -nn
+
+http://www.thegeekstuff.com/2010/08/tcpdump-command-examples/
