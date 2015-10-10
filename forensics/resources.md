@@ -1,3 +1,3 @@
 ###### FotoForensics
-* [Link](http://fotoforensics.com/)
+* http://fotoforensics.com/
 
