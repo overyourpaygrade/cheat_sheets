@@ -7,3 +7,7 @@
 * https://ctf365.com/
 * http://forensicscontest.com/puzzles
 * http://ringzer0team.com/
+
+###### Automatic Services
+* https://www.networktotal.com/
+* https://www.virustotal.com/
