@@ -14,3 +14,13 @@
 
 ###### Web Sec Rel
 * http://www.cgisecurity.com/papers/fingerprint-port80.txt
+
+##### Crypto
+* http://quipqiup.com/ || quipqiup - Automated Cryptogram Solver
+* http://cryptii.com/text/select || Cryptii - Convert, Encode and Decode content
+* http://www.asciitohex.com/  || asciitohex - Another free text conversion tool
+* https://crackstation.net/ || CrackStation - Password Hash Cracker
+* http://rainbowtables.it64.com/ || LM Hash Cracker
+* http://rumkin.com/tools/cipher/railfence.php || Railfence encode/decode
+* http://morsecode.scphillips.com/translator.html || Morse Code translator
+* https://sites.google.com/site/cryptocrackprogram/links-and-sample-ciphers || Cryptocrack and sample cyphers
