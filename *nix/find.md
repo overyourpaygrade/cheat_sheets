@@ -84,3 +84,6 @@
 
 ###### Find and ignore unreadable directories
 * find . ! -readable -prune
+
+###### Find all SUID Root files
+* find / -uid 0 -perm -4000 2>/dev/null
