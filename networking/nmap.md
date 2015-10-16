@@ -28,6 +28,9 @@
 ###### Verbose!
 * nmap -T4 -A -v 10.10.10.15
 
+###### Enumerate folders http 
+* nmap --script=http-enum 192.168.1.100 -p 80
+
 ###### NMAP Scan Options
 * -sT ( TcpConnect )  
 * -sS ( SYN scan ) 
