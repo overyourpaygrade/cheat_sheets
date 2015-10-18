@@ -13,6 +13,12 @@
 ###### Copy (sync and archive, preserve properties), verbose with progress. Drop in dir2
 * rsynv -avP dir/ dir2
 
+###### Shows all the shortcuts available in Bash.
+* bind -p
+
+###### Flush the content of a text file, in a single go, from the command prompt.
+* > file.txt
+
 #### For my.profile or bash.profile
 ###### Avoid duplicates
 * export HISTCONTROL=ignoredups:erasedups 
