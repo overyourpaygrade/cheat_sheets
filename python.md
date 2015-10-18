@@ -25,3 +25,5 @@
 ###### covert image to base64 string for data URI use
 * python -c 'print open("path/to/image.png", "rb").read().encode("base64").replace("\n","")'
 
+###### Creates a simple web page for the current working directory over port 8000.
+* python -m SimpleHTTPServer 
