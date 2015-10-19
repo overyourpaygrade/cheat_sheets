@@ -11,6 +11,8 @@
 ###### Automatic Services
 * https://www.networktotal.com/
 * https://www.virustotal.com/
+* http://fotoforensics.com/
+* http://document-analyzer.net/
 
 ###### Web Sec Rel
 * http://www.cgisecurity.com/papers/fingerprint-port80.txt
