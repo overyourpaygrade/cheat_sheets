@@ -19,6 +19,9 @@
 ###### Flush the content of a text file, in a single go, from the command prompt.
 * > file.txt
 
+###### Enable IP Forwarding
+echo "1" > /proc/sys/net/ipv4/ip_forward
+
 #### For my.profile or bash.profile
 ###### Avoid duplicates
 * export HISTCONTROL=ignoredups:erasedups 
