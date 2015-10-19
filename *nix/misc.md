@@ -22,6 +22,9 @@
 ###### Enable IP Forwarding
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
+###### Add DNS server
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+
 #### For my.profile or bash.profile
 ###### Avoid duplicates
 * export HISTCONTROL=ignoredups:erasedups 
