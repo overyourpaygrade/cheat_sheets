@@ -46,4 +46,8 @@
 ###### Do not resolve names
 * tcpdump -nn
 
-http://www.thegeekstuff.com/2010/08/tcpdump-command-examples/
+###### Connections to a specific IP
+* tcpdump -i eth0 -tttt dst 192.168.1.22 and not net 192.168.1.0/24
+
+###### Resources 
+* http://www.thegeekstuff.com/2010/08/tcpdump-command-examples/
