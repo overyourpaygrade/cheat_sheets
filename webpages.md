@@ -12,7 +12,11 @@
 * https://www.networktotal.com/
 * https://www.virustotal.com/
 * http://fotoforensics.com/
-* http://document-analyzer.net/
+* https://www.document-analyzer.net/
+* https://www.file-analyzer.net/
+* http://www.apk-analyzer.net/
+* http://www.url-analyzer.net/
+* http://regex.info/exif.cgi
 
 ###### Web Sec Rel
 * http://www.cgisecurity.com/papers/fingerprint-port80.txt
