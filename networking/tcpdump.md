@@ -49,5 +49,8 @@
 ###### Connections to a specific IP
 * tcpdump -i eth0 -tttt dst 192.168.1.22 and not net 192.168.1.0/24
 
+###### Headers!
+* tcpdump -n -A -r inputFile <bpf filter> |grep "GET\|POST\|Host:\|User-Agent:"
+
 ###### Resources 
 * http://www.thegeekstuff.com/2010/08/tcpdump-command-examples/
