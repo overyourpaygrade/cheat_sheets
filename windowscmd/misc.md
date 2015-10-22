@@ -15,3 +15,6 @@
 ###### Command History
 * reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
 * doskey /history
+
+###### Dump Process Memory
+* procdump.exe -ma mstsc.exe mstsc.dmp
