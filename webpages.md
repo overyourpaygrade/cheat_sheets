@@ -16,7 +16,7 @@
 * https://www.file-analyzer.net/
 * http://www.apk-analyzer.net/
 * http://www.url-analyzer.net/
-* http://regex.info/exif.cgi
+* http://regex.info/exif.cgi || EXIF Viewer
 * http://pcapng.com/ || PCAPNG to PCAP
 
 ###### Web Sec Rel
