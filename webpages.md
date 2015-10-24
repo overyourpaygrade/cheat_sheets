@@ -24,6 +24,7 @@
 * http://www.cgisecurity.com/papers/fingerprint-port80.txt
 
 ###### Crypto
+* http://crypo.in.ua/tools/ || Decrypt/Decode Compilation
 * http://quipqiup.com/ || quipqiup - Automated Cryptogram Solver
 * http://cryptii.com/text/select || Cryptii - Convert, Encode and Decode content
 * http://www.asciitohex.com/  || asciitohex - Another free text conversion tool
