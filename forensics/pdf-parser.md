@@ -7,5 +7,5 @@
 ###### View contents of indirect object 32
 * pdf-parser.py --object 32 pdf1.pdf
 
-###### Extract using correct filter into a raw file to look at contents
+###### Extract using correct filter into a raw file to look at contents (decompress FlateDecode)
 * pdf-parser.py --object 32 --filter --raw pdf1.pdf > out.js
