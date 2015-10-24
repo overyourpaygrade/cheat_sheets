@@ -18,6 +18,7 @@
 * http://www.url-analyzer.net/
 * http://regex.info/exif.cgi || EXIF Viewer
 * http://pcapng.com/ || PCAPNG to PCAP
+* https://www.onlinedisassembler.com/odaweb/ || Online Disassembler
 
 ###### Web Sec Rel
 * http://www.cgisecurity.com/papers/fingerprint-port80.txt
