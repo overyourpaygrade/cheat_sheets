@@ -16,3 +16,6 @@
 
 ###### Eliminate Whitespace
 * cat file | perl -pe 's/\n//g' | perl -pe 's/ //g'
+
+###### XOR with a key (5b)
+* perl -pe 's/(..)/chr(hex($1)^0x5b)/ge' encoded.hex > decoded.txt
