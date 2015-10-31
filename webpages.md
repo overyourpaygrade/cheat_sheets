@@ -33,3 +33,6 @@
 * http://rumkin.com/tools/cipher/railfence.php || Railfence encode/decode
 * http://morsecode.scphillips.com/translator.html || Morse Code translator
 * https://sites.google.com/site/cryptocrackprogram/links-and-sample-ciphers || Cryptocrack and sample cyphers
+
+###### Malware
+* http://www.malware-traffic-analysis.net/
