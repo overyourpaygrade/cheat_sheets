@@ -34,5 +34,6 @@
 * http://morsecode.scphillips.com/translator.html || Morse Code translator
 * https://sites.google.com/site/cryptocrackprogram/links-and-sample-ciphers || Cryptocrack and sample cyphers
 
-###### Malware
+###### Malware Analysis
 * http://www.malware-traffic-analysis.net/
+* http://www.505forensics.com/
