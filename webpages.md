@@ -8,6 +8,9 @@
 * http://forensicscontest.com/puzzles
 * http://ringzer0team.com/
 
+###### Forensics
+* https://github.com/Invoke-IR/ForensicPosters || forensic posters (mft and others)
+
 ###### Automatic Services
 * https://www.networktotal.com/
 * https://www.virustotal.com/
@@ -37,3 +40,4 @@
 ###### Malware Analysis
 * http://www.malware-traffic-analysis.net/
 * http://www.505forensics.com/
+* http://www.kernelmode.info/forum/
