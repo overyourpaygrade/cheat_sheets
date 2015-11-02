@@ -41,3 +41,8 @@
 * http://www.malware-traffic-analysis.net/
 * http://www.505forensics.com/
 * http://www.kernelmode.info/forum/
+
+###### Vulnerable
+* https://github.com/s4n7h0/xvwa || Xtreme Vulnerable Web App
+* https://github.com/WebGoat/WebGoat || Owasp WebGoat
+* https://github.com/PIVOT-Project || collection of learning resources. Including a CTF
