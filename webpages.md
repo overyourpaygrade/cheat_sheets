@@ -42,6 +42,7 @@
 * http://www.malware-traffic-analysis.net/
 * http://www.505forensics.com/
 * http://www.kernelmode.info/forum/
+* http://malwr.com/
 
 ###### Vulnerable
 * https://github.com/s4n7h0/xvwa || Xtreme Vulnerable Web App
