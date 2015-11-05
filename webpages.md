@@ -14,7 +14,8 @@
 
 ###### Automatic Services
 * https://www.networktotal.com/
-* https://www.virustotal.com/
+* https://www.virustotal.com/ || AV etc
+* https://virusscan.jotti.org/ || AV etc
 * http://fotoforensics.com/
 * https://www.document-analyzer.net/
 * https://www.file-analyzer.net/
