@@ -24,6 +24,7 @@
 * http://regex.info/exif.cgi || EXIF Viewer
 * http://pcapng.com/ || PCAPNG to PCAP
 * https://www.onlinedisassembler.com/odaweb/ || Online Disassembler
+* https://www.hybrid-analysis.com/ || PE, PDF/Office and APK files for analysis
 
 ###### Web Sec Rel
 * http://www.cgisecurity.com/papers/fingerprint-port80.txt
