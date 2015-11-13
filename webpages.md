@@ -49,3 +49,6 @@
 ###### Vulnerable
 * https://github.com/s4n7h0/xvwa || Xtreme Vulnerable Web App
 * https://github.com/WebGoat/WebGoat || Owasp WebGoat
+
+###### Exploits and Other
+* https://samsclass.info/127/127_F15.shtml#projects || Exploit Development!
