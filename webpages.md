@@ -10,6 +10,7 @@
 * https://github.com/PIVOT-Project || collection of learning resources. Including a CTF
 * https://exploit-exercises.com/ || Downloadable, like overthewire
 * http://overthewire.org/wargames/
+* https://github.com/vector35/pwnadventurez || NES Game!
 
 ###### Forensics
 * https://github.com/Invoke-IR/ForensicPosters || forensic posters (mft and others)
