@@ -54,3 +54,6 @@
 
 ###### Exploits and Other
 * https://samsclass.info/127/127_F15.shtml#projects || Exploit Development!
+
+###### SQL
+* http://websec.ca/kb/sql_injection
