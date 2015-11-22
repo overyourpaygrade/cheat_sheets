@@ -28,6 +28,7 @@
 * http://pcapng.com/ || PCAPNG to PCAP
 * https://www.onlinedisassembler.com/odaweb/ || Online Disassembler
 * https://www.hybrid-analysis.com/ || PE, PDF/Office and APK files for analysis
+* https://www.reverse.it/ ||  malware analysis service
 
 ###### Web Sec Rel
 * http://www.cgisecurity.com/papers/fingerprint-port80.txt
