@@ -35,7 +35,9 @@ def main():
       formatted = '{}.{}.{}.{}'.format(cidr[0],cidr[1],cidr[2],third+counter)
       ipList.append(formatted)
       counter += 1
-
+      if third + counter > 255:
+        print "Outise the range or segment not valid"
+        exit(1)
 
   for ip in ipList:
     print ip
