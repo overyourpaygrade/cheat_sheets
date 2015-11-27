@@ -1,8 +1,5 @@
 # IP segment enumeration hack
-
-import argparse
 import re
-
 
 def seg_builder(input_str):
   
