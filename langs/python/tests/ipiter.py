@@ -10,7 +10,8 @@ dict = {
   '26' : 64,
   '27' : 32,
   '28' : 16,
-  '29' : 8
+  '29' : 8,
+  '30' : 4
 }
 
 def main():
@@ -35,7 +36,7 @@ def main():
       formatted = '{}.{}.{}.{}'.format(cidr[0],cidr[1],cidr[2],third+counter)
       ipList.append(formatted)
       counter += 1
-      if third + counter > 255:
+      if third + counter > 256:
         print "Outise the range or segment not valid"
         exit(1)
 
