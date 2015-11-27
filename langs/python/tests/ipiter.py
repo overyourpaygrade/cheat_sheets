@@ -29,9 +29,12 @@ def main():
             counter = 0
             break
   else:
-    for ip in range(int(cidr[3]),dict[mask]):
-      formatted = '{}.{}.{}.{}'.format(cidr[0],cidr[1],cidr[2],str(ip))
+    counter = 0
+    third = int(cidr[3])
+    for ip in range(dict[mask]):
+      formatted = '{}.{}.{}.{}'.format(cidr[0],cidr[1],cidr[2],third+counter)
       ipList.append(formatted)
+      counter += 1
 
 
   for ip in ipList:
