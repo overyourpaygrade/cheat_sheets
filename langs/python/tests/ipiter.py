@@ -51,5 +51,10 @@ if __name__ == '__main__':
   ipList = []
   cidr = re.findall(r"[\w]+", args.cidr)
   mask = cidr[4]
+  ismask = mask in dict
+
+  if ismask == False:
+    print "Mask not supported or invalid"
+    exit(1)
 
   main()
