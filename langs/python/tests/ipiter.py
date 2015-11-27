@@ -17,14 +17,17 @@ def main():
 
   if dict[mask] == 512:
     if int(cidr[3]) == 0:
-      for ip in range(int(cidr[3]),dict[mask]-256):
-        formatted = '{}.{}.{}.{}'.format(cidr[0],cidr[1],cidr[2],str(ip))
-        ipList.append(formatted)
-
-      for ip in range(int(cidr[3]),dict[mask]-256):
-        third = int(cidr[2]) + 1
-        formatted = '{}.{}.{}.{}'.format(cidr[0],cidr[1],third,str(ip))
-        ipList.append(formatted)
+      counter = 0
+      third = int(cidr[2])
+      for x in range(0, 2):
+        for ip in range(int(cidr[3]),dict[mask]-256):
+          formatted = '{}.{}.{}.{}'.format(cidr[0],cidr[1],third,str(ip))
+          ipList.append(formatted)
+          counter += 1
+          if counter > 255:
+            third = third + 1 
+            counter = 0
+            break
   else:
     for ip in range(int(cidr[3]),dict[mask]):
       formatted = '{}.{}.{}.{}'.format(cidr[0],cidr[1],cidr[2],str(ip))
