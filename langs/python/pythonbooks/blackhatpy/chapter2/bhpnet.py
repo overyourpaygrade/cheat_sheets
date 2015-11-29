@@ -131,7 +131,7 @@ def server_loop():
       client_thread = threading.Thread(target=client_handler, args=(client_socket,))
       client_thread.start()
       
-def run_command():
+def run_command(command):
   # Trim the newline
   command = command.rstrip()
   
