@@ -2,6 +2,7 @@ import zipfile
 import optparse
 from threading import Thread
 
+# Try the password and pass on exceptions
 def extractFile(zFile, password):
   try:
     zFile.extractall(pwd=password)
