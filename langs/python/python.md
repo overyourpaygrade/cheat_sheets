@@ -17,7 +17,7 @@
 ``` python -c "print ''.join(chr(int(''.join(i), 16)) for i in zip(*[iter('474e552773204e6f7420556e6978')]*2))"```
 
 ###### Generate a random password
-```` python -c 'import random; print "".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*-_=+") for i in range(10)])'```
+``` python -c 'import random; print "".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*-_=+") for i in range(10)])'```
 
 ###### Generate a 18 character password, print the password and sha512 salted hash
 ``` cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 18 | head -1 | python -c "import sys,crypt; stdin=sys.stdin.readline().rstrip('\n'); print stdin;print crypt.crypt(stdin)"```
