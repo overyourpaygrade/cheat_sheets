@@ -38,6 +38,15 @@ recipe.docx 12008
 ###### Wireshark filter for src and dst
 ```tshark -r capturefile.pcap -R "ip.src==192.168.1.158 && ip.dst==192.168.1.10"```
 
+###### Parse Protocol Fields (AIM message data)
+```tshark -r evidence01.pcap -d tcp.port==443,aim -T fields -n -e "aim.messageblock.message"```
+
+###### Generate a file with two hosts only (value of 0 specifies a snapshot length of 65535, full packet is captured)
+```tshark -s 0 -r evidence01.pcap -w evidence01-talkers.pcap 'host 64.12.24.50 and host 192.168.1.158'```
+
+###### List conversations
+```tshark -qn -z conv,tcp -r evidence01.pcap```
+
 ----
 
 ###### [Raw packet data field only](https://ask.wireshark.org/questions/15374/dump-raw-packet-data-field-only)
