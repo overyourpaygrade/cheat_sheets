@@ -32,6 +32,7 @@
 
 ###### Web Sec Rel
 * http://www.cgisecurity.com/papers/fingerprint-port80.txt
+* https://www.tunnelsup.com/online-security-conferences || 2015 Security Conferences Videos
 
 ###### Crypto
 * http://crypo.in.ua/tools/ || Decrypt/Decode Compilation
