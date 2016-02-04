@@ -1,14 +1,14 @@
 ###### min_api1.py
-'''
+```
 $ curl http://127.0.0.1:5000/
 127.0.0.1 - - [03/Feb/2016 23:10:32] "GET / HTTP/1.1" 200 -
 {
     "hello": "world"
 }
-'''
+```
 
 ###### min_api2.py
-'''
+```
 $ curl http://127.0.0.1:5000/todo1 -d "data=Remember the milk" -X PUT
 127.0.0.1 - - [03/Feb/2016 23:15:08] "PUT /todo1 HTTP/1.1" 200 -
 {
@@ -30,4 +30,4 @@ $ curl http://127.0.0.1:5000/todo2
     "todo2": "Change the breakpads"
 }
 
-'''
+```
