@@ -34,7 +34,7 @@ $ curl http://127.0.0.1:5000/todo2
 
 ```
 
-###### min_api_3.py
+##### min_api_3.py
 ```
 $ curl http://localhost:5000/Todo1 -v
 * About to connect() to localhost port 5000 (#0)
