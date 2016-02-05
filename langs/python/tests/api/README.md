@@ -143,3 +143,54 @@ $ curl http://localhost:5000/todos/todo3 -d "task=something different" -X PUT -v
 }
 * Closing connection #0
 ```
+
+##### api_wdb.py
+###### Get root
+```
+curl http://localhost:5000/
+<ul class=posts>
+
+        <li><h2> First Entry</h2>This is some text
+
+        <li><h2> Second Entry</h2>This is some more text
+
+        <li><h2> Third Entry</h2>This is some more text again
+
+</ul>  
+```
+
+###### Get all db items
+```
+$ curl http://localhost:5000/api/v1/posts/
+{
+  "count": 3,
+  "posts": [
+    {
+      "text": "This is some text",
+      "title": "First Entry"
+    },
+    {
+      "text": "This is some more text",
+      "title": "Second Entry"
+    },
+    {
+      "text": "This is some more text again",
+      "title": "Third Entry"
+    }
+  ]
+}
+```
+
+###### Get one item
+```
+$ curl http://localhost:5000/api/v1/posts/1
+{
+  "count": 1,
+  "posts": [
+    {
+      "text": "This is some text",
+      "title": "First Entry"
+    }
+  ]
+}
+```
