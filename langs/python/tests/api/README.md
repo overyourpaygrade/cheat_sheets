@@ -34,6 +34,79 @@ $ curl http://127.0.0.1:5000/todo2
 
 ```
 
+###### min_api_3.py
+```
+$ curl http://localhost:5000/Todo1 -v
+* About to connect() to localhost port 5000 (#0)
+*   Trying 127.0.0.1...
+* connected
+* Connected to localhost (127.0.0.1) port 5000 (#0)
+> GET /Todo1 HTTP/1.1
+> User-Agent: curl/7.26.0
+> Host: localhost:5000
+> Accept: */*
+>
+* additional stuff not fine transfer.c:1037: 0 0
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Type: application/json
+< Content-Length: 30
+< Server: Werkzeug/0.11.3 Python/2.7.3
+< Date: Fri, 05 Feb 2016 02:15:43 GMT
+<
+{
+    "task": "Hello world"
+}
+* Closing connection #0
+
+$ curl http://localhost:5000/Todo2 -v
+* About to connect() to localhost port 5000 (#0)
+*   Trying 127.0.0.1...
+* connected
+* Connected to localhost (127.0.0.1) port 5000 (#0)
+> GET /Todo2 HTTP/1.1
+> User-Agent: curl/7.26.0
+> Host: localhost:5000
+> Accept: */*
+>
+* additional stuff not fine transfer.c:1037: 0 0
+* HTTP 1.0, assume close after body
+< HTTP/1.0 201 CREATED
+< Content-Type: application/json
+< Content-Length: 30
+< Server: Werkzeug/0.11.3 Python/2.7.3
+< Date: Fri, 05 Feb 2016 02:15:46 GMT
+<
+{
+    "task": "Hello world"
+}
+* Closing connection #0
+
+$ curl http://localhost:5000/Todo3 -v
+* About to connect() to localhost port 5000 (#0)
+*   Trying 127.0.0.1...
+* connected
+* Connected to localhost (127.0.0.1) port 5000 (#0)
+> GET /Todo3 HTTP/1.1
+> User-Agent: curl/7.26.0
+> Host: localhost:5000
+> Accept: */*
+>
+* additional stuff not fine transfer.c:1037: 0 0
+* HTTP 1.0, assume close after body
+< HTTP/1.0 201 CREATED
+< Content-Type: application/json
+< Content-Length: 30
+< Etag: some-opaque-string
+< Server: Werkzeug/0.11.3 Python/2.7.3
+< Date: Fri, 05 Feb 2016 02:15:48 GMT
+<
+{
+    "task": "Hello world"
+}
+* Closing connection #0
+```
+
 ##### min_api_final.py
 ###### GET all todos
 ```
