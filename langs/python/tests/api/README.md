@@ -194,3 +194,29 @@ $ curl http://localhost:5000/api/v1/posts/1
   ]
 }
 ```
+
+###### Delete a post
+```
+$ curl http://localhost:5000/api/v1/posts/1 -X DELETE -v
+* About to connect() to localhost port 5000 (#0)
+*   Trying 127.0.0.1...
+* connected
+* Connected to localhost (127.0.0.1) port 5000 (#0)
+> DELETE /api/v1/posts/1 HTTP/1.1
+> User-Agent: curl/7.26.0
+> Host: localhost:5000
+> Accept: */*
+>
+* additional stuff not fine transfer.c:1037: 0 0
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Type: application/json
+< Content-Length: 30
+< Server: Werkzeug/0.11.3 Python/2.7.3
+< Date: Fri, 05 Feb 2016 01:49:27 GMT
+<
+{
+  "status": "Post deleted"
+* Closing connection #0
+}
+```
