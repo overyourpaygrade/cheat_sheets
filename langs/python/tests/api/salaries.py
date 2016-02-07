@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 from json import dumps
@@ -18,14 +18,14 @@ class Departments_Meta(Resource):
 		conn = e.connect()
 		# Perform query and return JSON data
 		query = conn.execute("select distinct DEPARTMENT from salaries")
-		return {'departments': [i[0] for i in query.cursor.fetchall()]}
+		return jsonify({'departments': [i[0] for i in query.cursor.fetchall()]})
 
 class Departmental_Salary(Resource):
 	def get(self, department_name):
 		conn = e.connect()
 		query = conn.execute("select * from salaries where Department='%s'"%department_name.upper())
 		result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
-		return result
+		return jsonify(result)
 		# We can have PUT,DELETE,POST here. Only GET here
 
 api.add_resource(Departmental_Salary, '/dept/<string:department_name>')
