@@ -15,7 +15,7 @@ with open('secret.png', 'rb') as fp:
 
         for col in range(width):
 
-            fgr, fgb, fgg = img.getpixel((col,row))
+            fgr, fgg, fgb = img.getpixel((col,row))
 
             if fgr % 2 == 0:
                 newIm.putpixel((col,row),(255,255,255))
