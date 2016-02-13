@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# From: http://www.pythonforbeginners.com/
 
 import fnmatch
 import os
