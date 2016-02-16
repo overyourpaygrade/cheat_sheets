@@ -20,3 +20,6 @@
 
 ###### Go to the Nth line of the file after opening it.
 * vim +10 /etc/passwd
+
+###### Good color file
+* Tomorrow-Night-Eighties.vim
