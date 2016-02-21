@@ -1,3 +1,26 @@
+###### 0301 Classes, Instances, Type, Methods and Attributes
+```
+* Class: a blueprint for an instance
+* Instance: a constructed object of the class
+* Type: indicates the class the instance belongs to
+* Attribute: any object value: object.attribute
+* Method: a "callable attribute" defined in the class (function)
+```
+###### Instance Methods and Attributes
+```
+* A "car" can be seen as a class of object
+* The car class provides the blueprint for a car object
+* Each instance of a car does the same things (methods)
+* But, each car instance has its own state (attributes)
+```
+###### An object's interface
+```
+* An object's interface is made up of its methods
+* Methods are like "buttons" that operate the object
+* Methods often change an instance's state (its data)
+* A method's often complex implementation is hidden behind the interface
+```
+
 ###### 0406 Decorators; Class and Static Methods
 ```
 * A class method takes the class (not instance) as argument and works with the class object
