@@ -118,3 +118,45 @@
 ###### Display the route taken for IP 192.168.1.5
 `ip route get 192.168.1.5`
 
+---------
+
+##### Managing the ARP table
+
+###### neigh add - Add an entry to the ARP table
+
+###### Add address 192.168.1.1 with MAC 1:2:3:4:5:6 to eth0
+`ip neigh add 192.168.1.1 lladdr 1:2:3:4:5:6 dev eth0`
+
+###### neigh del - Invalidate an entry
+
+###### Invalidate the entry for 192.168.1.1 on eth0
+`ip neigh del 192.168.1.1 dev eth0`
+
+###### neigh replace - Replace, or adds if not defined, an entry to the ARP table
+
+###### Replace the entry for addr 192.168.1.1 to use MAC 1:2:3:4:5:6 on eth0
+`ip neigh replace 192.168.1.1 lladdr 1:2:3:4:5:6 dev eth0`
+
+---------
+
+###### Nettools vs IProute
+
+| NET-TOOLS Commands| IPROUTE Commands |
+| ----------------- | ---------------- |
+| arp -a | ip neigh |
+| apr -v | ip -s neigh |
+| arp -s 192.168.1.1 1:2:3:4:5:6 | ip neigh add 192.168.1.1 lladdr 1:2:3:4:5:6 dev eth1 |
+| arp -i eth1 -d 192.168.1.1 | ip neigh del 192.168.1.1 dev eth1 |
+| ifconfig -a | ip addr |
+| ifconfig eth0 down | ip link set eth0 down |
+| ifconfig eth0 up | ip link set eth0 up |
+| ifconfig eth0 192.168.1.1 | ip addr add 192.168.1.1/24 dev eth0 |
+| ifconfig eth0 netmask 255.255.255.0 | ip addr add 192.168.1.1/24 dev eth0 |
+| ifconfig eth0 mtu 9000 | ip link set eth0 mtu 9000 |
+| ifconfig eth0:0 192.168.1.2 | ip addr add 192.168.1.2/24 dev eth0 |
+| netstat | ss |
+| netstat -neopa | ss -neopa |
+| netstat -g | ip maddr |
+| route | ip route |
+| route add -net 192.168.1.0 netmask 255.255.255.0 dev eth0 | ip route add 192.168.1.0/24 dev eth0 |
+| route add default gw 192.168.1.1 | ip route add default via 192.168.1.1 |
