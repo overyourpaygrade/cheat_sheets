@@ -1,0 +1,22 @@
+Projects
+BinauralGenerator   Generate custom binaural audio in real time with this GUI application. Written in Java.
+ChromeExtensionTemplate Basic working Chrome extension meant to be a starting place for a new extension.
+Cookbook    Code snippets and references for many languages and libraries.
+GameOfLifeSimulator John Conway's Game of Life simulator that will run many iterations and output to file. Written in Go.
+GameOfLifeVisualizer    Watch and interact John Conway's Game of Life with this graphical program. Written in Ruby using the Gosu library.
+Geddit  Tool to download imgur.com images or galleries from a reddit.com subreddit. Written in Python 3.
+GoogleDorks Store the google dorks from https://www.exploit-db.com/google-hacking-database/ in a local SQLite database. Written in PHP.
+ip2kml  Command line program to geolocate IP addresses or domain names and generate a Google Earth/Map file to visualize locations. Written in Ruby.
+NameGenerator   Generate a random name by combining random syllables from a given input file.
+NanoCommander   3D file system browser. Written in Python using Panda3D. Limited functionality currently.
+OkCupidLogger   Log messages from OkCupid to a MySQL database.
+RestTester  GUI to test HTTP requests. Written in Java using JavaFX.
+Soundboard  Soundboard template for creating custom GUI soundboards. Written in Java using JavaFX.
+ServerStatus    GUI tool to check the SSH status of many Linux servers at once with diagnostic information. Written in Python 2.
+StarCruiser3D   3D space shooter. Written in Python using the Panda3D library. Warning: This project is pre-alpha state and has very limited functionality.
+tcp_blackhole   A TCP server that accept connections, read and discard anything sent to it (acting like /dev/null for TCP). Also can be run to act as an echo server. Written in Python 3.
+Wardriver   Scripts to help wardrive using a laptop to listen for wi-fi and use the GPS from an Android device. Generates a Google Earth KML file of the results.
+
+more
+more
+more
