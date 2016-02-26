@@ -94,6 +94,23 @@ Breaking Encapsulation
 * Working File: 0308_class_instance_data.py
 ```
 
+###### 0404 Inheriting the Constructor
+```
+* __init__ is like any other method; it can be inherited
+* If a class does not have an __init__ constructor, Python will check its parent class to see if it can find one
+* As soon as it finds one, Python calls it and stops looking
+* We can use the super() function to call methods in the parent class
+* We may want to initialize in the parent as well as our own class
+```
+
+###### 0405 Multiple Inheritance
+```
+* Any class can inherit from multiple classes
+* Python normally uses a "depth-first" order when searching inheriting classes
+* But when two classes inherit from the same class, Python eliminates the first mention of that class from the mro (method resolution order)
+* The above applies to "new style" classes (inheriting from object)
+```
+
 ###### 0406 Decorators; Class and Static Methods
 ```
 * A class method takes the class (not instance) as argument and works with the class object
