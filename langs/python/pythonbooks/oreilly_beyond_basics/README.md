@@ -136,4 +136,12 @@ Breaking Encapsulation
     * Provide: implement abstract method that parent requires
 ```
 
+###### 0409 Composition vs. Inheritance
+```
+* Inheritance can be brittle (a change may require changes elsewhere)
+* Decoupled code is classes, functions, etc. that work independently and don't depend on one another
+* As long as the interface is maintained, interaction between classes will work
+* Not checking or requiring particular types is polymorphic and Pythonic
+```
+
 
