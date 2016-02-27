@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from 0410_assignment import LogFile, DelimFile
+from assignment import LogFile, DelimFile
 
 log = LogFile('0410_log.txt')
 c = DelimFile('0410_test.csv', ',')
