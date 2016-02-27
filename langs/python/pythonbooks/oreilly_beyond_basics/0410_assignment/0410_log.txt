@@ -1,2 +1,4 @@
 2016-02-26 20:46    this is a log message
 2016-02-26 20:46    this is another log message
+2016-02-27 12:31    this is a log message
+2016-02-27 12:31    this is another log message
