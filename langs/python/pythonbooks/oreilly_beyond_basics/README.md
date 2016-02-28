@@ -144,4 +144,31 @@ Breaking Encapsulation
 * Not checking or requiring particular types is polymorphic and Pythonic
 ```
 
+###### 0501 Implementing Python's Core Syntax
+```
+* Our classes can respond to core syntax features
+    * Operators like +, -, *, /
+    * Operators like in
+    * Built-in functions line len() and str()
+    * looping
+    * Subscripts and slices
+* Core syntax features translate to "magic" method calls
+* http://www.rafekettler.com/magicmethods.html
 
+* Core syntax resolutions:
+    * 'abc' in var  = var.__contains__('abc')
+    * var == 'abc'  = var.__eq__('abc')
+    * var[1]        = var.__getitem__(1)
+    * var[1:3]      = var.__getslice__(1, 3)
+    * len(var)      = var.__len__()
+    * print var     = var.__repr__()
+```
+
+###### 0502 Subclassing Built-Ins
+```
+Inheriting From Built-Ins
+    * Python lets our classes inhering from built-in classes
+    * An inheriting (child) class of a built-in shared all the same attributes (including methods) of the built-in
+    * We can take advantage of core built-in functionality, but customize selected operations
+    * Built-in behavior is familiar to all Python developers - this can make use of our inheriting class easy to learn
+```
