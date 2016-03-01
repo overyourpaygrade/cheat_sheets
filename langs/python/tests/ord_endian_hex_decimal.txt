@@ -1,0 +1,17 @@
+str     t   e   s   t
+ord     116 101 115 116
+hex     74  65  73  74
+littleE 74  73  65  74
+decimal 1953719668
+
+
+http://stackoverflow.com/questions/17627388/unpack-function-in-python?answertab=votes#tab-top
+
+Use 4s if you want unpack string as is.
+
+>>> struct.unpack('4s', 'test')[0]
+'test'
+1953719668 is derived by: (little endian)
+
+>>> ord('t') + (ord('e') << 8) + (ord('s') << 16) + (ord('t') << 24)
+1953719668
