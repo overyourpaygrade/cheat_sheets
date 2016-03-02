@@ -30,3 +30,12 @@ print fh
 df = pd.read_csv('example.csv', header=True, names=['UID','First Name',
     'Last Name', 'Age', 'Pre-Test Score', 'Post-Test Score'])
 print df
+
+#Load a csv with setting the index column to UID
+df = pd.read_csv('example.csv', index_col='UID', header=True, names=['UID',
+    'First Name', 'Last Name', 'Age', 'Pre-Test Score', 'Post-Test Score'])
+print df
+
+# Load a csv while specifying "." as missing values
+df = pd.read_csv('example.csv', na_values=['.'])
+print pd.isnull(df)
