@@ -34,6 +34,9 @@
 ###### Capture packets for particular destination IP and Port
 * tcpdump -i eth0 port 22
 
+###### Specific port or protocol
+* tcpdump udp port 53
+
 ###### Capture TCP communication packets between two hosts
 * tcpdump -w comm.pcap -i eth0 dst 16.181.170.246 and port 22
 
