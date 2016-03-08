@@ -2,7 +2,7 @@
 * py3.png
 
 ###### Language Learning Resources
-```
+
 SQL
 * [http://sql.learncodethehardway.org/book/]()
 
@@ -14,5 +14,5 @@ Python
 * [https://python.zeef.com/luis.solis]()
 * [https://developers.google.com/edu/python/]()
 * [https://pymotw.com/2/]()
-```
+
 
