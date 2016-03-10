@@ -1,3 +1,4 @@
+# while true ; do echo "hi" >> test2.txt ; sleep 1 ; done
 hi
 hi
 hi
