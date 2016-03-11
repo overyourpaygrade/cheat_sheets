@@ -115,3 +115,7 @@ Sockets with remote ports less than 100
 Connections to remote port 80
 
 `sudo ss -nt state connected dport = :80`
+
+---
+
+http://www.binarytides.com/linux-ss-command/
