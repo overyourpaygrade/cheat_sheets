@@ -1,0 +1,25 @@
+- name : "6x40GE + 24x10GE MPC5E"
+  ports :
+      10g : [ 0/0, 0/1, 0/2, 0/3, 0/4, 0/5, 0/6, 0/7, 0/8, 0/9, 0/10, 0/11 ]
+      40g : [ 2/0, 2/1, 2/2, 3/0, 3/1, 3/2 ]
+- name : "2x100GE + 8x10GE MPC4E"
+  ports :
+      10g : [ 0/0, 0/1, 0/2, 0/3, 2/0, 2/1, 2/2, 2/3 ]
+      100g : [ 1/0, 3/0 ]
+- name : "MPC-3D-16XGE-SFPP"
+  ports :
+      10g : [ "Xcvr 0", "Xcvr 1" ]
+- name : "MPC-3D-16XGE-SFPP-X"
+  pics :
+    0 :
+      ports :
+        10g : [ "Xcvr 0", "Xcvr 1", "Xcvr 2", "Xcvr 3" ]
+    1 :
+      ports :
+        10g : [ 0, 1, 2, 3 ]
+    2 :
+      ports :
+        10g : [ 0, 1, 2, 3 ]
+    3 :
+      ports :
+        10g : [ 0, 1, 2, 3 ]
