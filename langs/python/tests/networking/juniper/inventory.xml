@@ -52,7 +52,7 @@
                 <serial-number>CW0213093063</serial-number>
                 <description>EX2200-24T-4G</description>
                 <clei-code>COMXZ10BRA</clei-code>
-                <model-number>EX2200-24T-4G</model-number>
+                <model-number>MPC-3D-16XGE-SFPP-X</model-number>
                 <chassis-sub-module>
                     <name>CPU</name>
                     <part-number>BUILTIN</part-number>
@@ -63,9 +63,11 @@
                     <name>PIC 0</name>
                     <part-number>BUILTIN</part-number>
                     <serial-number>BUILTIN</serial-number>
-                    <description>24x 10/100/1000 Base-T</description>
+                    <description>4x 10GE(LAN) SFP+</description>
                     <chassis-sub-sub-module>
                         <name>Xcvr 0</name>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
                         <name>Xcvr 1</name>
                     </chassis-sub-sub-module>
                     <clei-code>COMXZ10BRA</clei-code>
@@ -78,6 +80,29 @@
                     <description>24x 10/100/1000 Base-T</description>
                     <chassis-sub-sub-module>
                         <name>Xcvr 0</name>
+                    </chassis-sub-sub-module>
+                    <clei-code>COMXZ10BRA</clei-code>
+                    <model-number>EX2200-24T-4G</model-number>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 2</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>24x 10/100/1000 Base-T</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 3</name>
+                    </chassis-sub-sub-module>
+                    <clei-code>COMXZ10BRA</clei-code>
+                    <model-number>EX2200-24T-4G</model-number>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 3</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>24x 10/100/1000 Base-T</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 1</name>
+                        <name>Xcvr 3</name>
                     </chassis-sub-sub-module>
                     <clei-code>COMXZ10BRA</clei-code>
                     <model-number>EX2200-24T-4G</model-number>

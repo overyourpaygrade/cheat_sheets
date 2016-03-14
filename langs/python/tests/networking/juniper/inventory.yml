@@ -16,10 +16,10 @@
         10g : [ "Xcvr 0", "Xcvr 1", "Xcvr 2", "Xcvr 3" ]
     1 :
       ports :
-        10g : [ 0, 1, 2, 3 ]
+        10g : [ "Xcvr 0", "Xcvr 1", "Xcvr 2", "Xcvr 3" ]
     2 :
       ports :
-        10g : [ 0, 1, 2, 3 ]
+        10g : [ "Xcvr 0", "Xcvr 1", "Xcvr 2", "Xcvr 3" ]
     3 :
       ports :
-        10g : [ 0, 1, 2, 3 ]
+        10g : [ "Xcvr 0", "Xcvr 1", "Xcvr 2", "Xcvr 3" ]
