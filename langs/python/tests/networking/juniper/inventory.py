@@ -15,8 +15,9 @@ with open('inventory.yml','rb') as f_yaml, open('inventory.xml') as fd:
 
     mydict = xmltodict.parse(fd.read())
 
+    cheat = {}
+
     for mod in mydict['rpc-reply']['chassis-inventory']['chassis']['chassis-module']:
-        #print "{}  {}".format(mod['name'],mod['description'])
         if "FPC" in mod['name']:
             print mod['name']
             print mod['model-number']
@@ -27,16 +28,12 @@ with open('inventory.yml','rb') as f_yaml, open('inventory.xml') as fd:
                 print "PNum {}".format(line['part-number'])
 
                 if 'chassis-sub-sub-module' in line:
+
                     for fk in line['chassis-sub-sub-module']:
                         if not isinstance(fk, basestring):
                             for lin in yaml_settings[3]['pics'][0]['ports']['10g']:
-                                match = 0
-                                #print "this is fk", fk
-                                if lin in fk['name']:
+                                if fk['name'] in lin:
                                     print "    subs:{} == {}".format(lin,fk['name'])
-                                    match = 1
-                                #if match == 0:
-                                #    print "    subs:{} == None".format(lin)
                         else:
                             li = line['chassis-sub-sub-module']['name']
                             for lin in yaml_settings[3]['pics'][0]['ports']['10g']:
