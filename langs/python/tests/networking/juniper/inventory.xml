@@ -102,6 +102,8 @@
                     <description>24x 10/100/1000 Base-T</description>
                     <chassis-sub-sub-module>
                         <name>Xcvr 1</name>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
                         <name>Xcvr 3</name>
                     </chassis-sub-sub-module>
                     <clei-code>COMXZ10BRA</clei-code>
