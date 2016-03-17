@@ -5,6 +5,7 @@ import krakenex
 import argparse
 import json
 import requests
+import logging
 from pprint import pprint
 
 '''
@@ -29,8 +30,18 @@ def main():
 
     parser.add_argument('-m',dest='mode',action='store',
                         help='Op mode: Loop, Single, or Asset Pair')
+
+    parser.add_argument('-c',dest='currency',action='store',
+                        type=float,help='Current price of the currency in BTC')
+
+    parser.add_argument('-s',dest='shares',action='store',
+                        type=int,help='Share amount')
+
     parser.add_argument('-l',dest='inf_loop',action='store_true',
                         help='loop mode')
+
+    parser.add_argument('-d',dest='debug',action='store_true',
+                        help='debug mode')
     args = parser.parse_args()
 
     supported_asset_pairs = [
@@ -45,10 +56,35 @@ def main():
                     'b' : 'bid array',
     }
 
+    logging.basicConfig(level=logging.INFO)
+    logger1 = logging.getLogger('')
+    logger1.info(args.mode)
+
     if args.mode == 'query':
         loops(krak_conn,ticker_vals,args)
     elif args.mode == 'req':
         q_asset_pairs()
+    elif args.mode == 'calc':
+        calculate(krak_conn,args.currency,args.shares)
+
+def calculate(krak_conn,currency,shares):
+
+    xbtc2usd = krak_conn.query_public('Ticker', {'pair':'XXBTZUSD'})
+    btc = xbtc2usd['result']['XXBTZUSD']['a'][0].split('.')[0]
+
+    calc_r = (currency * shares) * int(btc)
+
+    print "Price in USD: ", calc_r
+
+
+def q_asset_ticker(krak_conn):
+
+    xbtc2usd = krak_conn.query_public('Ticker', {'pair':'XXBTZUSD'})
+    xeth2usd = krak_conn.query_public('Ticker', {'pair':'XETHZUSD'})
+    logger1.debug('Asset TPL: {}'.format(asset_tpl))
+
+    return xbtc2usd, xeth2usd
+
 
 def q_asset_pairs():
 
