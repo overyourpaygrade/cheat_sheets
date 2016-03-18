@@ -6,6 +6,7 @@ import argparse
 import json
 import requests
 import logging
+import csv
 from pprint import pprint
 
 '''
@@ -52,10 +53,6 @@ def main():
         'XXBTZUSD.d',
         ]
 
-    ticker_vals = { 'a' : 'ask array',
-                    'b' : 'bid array',
-    }
-
     logging.basicConfig(level=logging.INFO)
     logger1 = logging.getLogger('')
     logger1.info(args.mode)
@@ -66,6 +63,10 @@ def main():
         q_asset_pairs()
     elif args.mode == 'calc':
         calculate(krak_conn,args.currency,args.shares)
+    elif args.mode == 'file':
+        analyze(krak_conn)
+    elif args.mode == 'tick':
+        q_asset_ticker(krak_conn)
 
 def calculate(krak_conn,currency,shares):
 
@@ -79,11 +80,19 @@ def calculate(krak_conn,currency,shares):
 
 def q_asset_ticker(krak_conn):
 
-    xbtc2usd = krak_conn.query_public('Ticker', {'pair':'XXBTZUSD'})
-    xeth2usd = krak_conn.query_public('Ticker', {'pair':'XETHZUSD'})
-    logger1.debug('Asset TPL: {}'.format(asset_tpl))
+    url = 'https://poloniex.com/public?command=returnTicker'
 
-    return xbtc2usd, xeth2usd
+    r = requests.get(url)
+
+    pairs = json.loads(r.text)
+
+    #print pairs['BTC_MYR']
+
+    #pprint(pairs)
+
+    #logger1.debug('Asset TPL: {}'.format(asset_tpl))
+
+    return pairs
 
 
 def q_asset_pairs():
@@ -95,6 +104,30 @@ def q_asset_pairs():
     pairs = json.loads(r.text)
 
     pprint(pairs)
+
+def analyze(krak_conn):
+
+    all_pairs = q_asset_ticker(krak_conn)
+    btc_usd = all_pairs['USDT_BTC']['last']
+
+
+    with open('asset_list.csv') as fh_csv:
+
+        asset_list = list(csv.reader(fh_csv))
+
+        print "{:10} {:13} {:12} {}".format(\
+            "Coin","Polo Price","Amount","Dollars")
+
+        for coinname,shares in asset_list:
+
+            currency = float(all_pairs['{}'.format(coinname)]['last'])
+            btc_price = int(btc_usd.split('.')[0])
+            val_in_usd = (currency * float(shares)) * btc_price
+
+            print "{:10} {:13} {:12} {:04.2f}".format(\
+                coinname,all_pairs['{}'.format(coinname)]['last'],
+                shares, val_in_usd
+                )
 
 
 def loops(krak_conn,ticker_vals,args):
