@@ -9,16 +9,6 @@ import logging
 import csv
 from pprint import pprint
 
-'''
-a = ask array(<price>, <whole lot volume>, <lot volume>),
-b = bid array(<price>, <whole lot volume>, <lot volume>),
-Sell:
-btc2usd['result']['XXBTZUSD']['a'][0]
-Buy:
-btc2usd['result']['XXBTZUSD']['b'][0]
-
-'''
-
 def main():
 
     try:
@@ -38,8 +28,10 @@ def main():
     parser.add_argument('-s',dest='shares',action='store',
                         type=int,help='Share amount')
 
-    parser.add_argument('-l',dest='inf_loop',action='store_true',
+    parser.add_argument('--loop',dest='inf_loop',action='store_true',
                         help='loop mode')
+
+    parser.add_argument('--log',dest='log', help='log mode')
 
     parser.add_argument('-d',dest='debug',action='store_true',
                         help='debug mode')
@@ -53,10 +45,12 @@ def main():
         'XXBTZUSD.d',
         ]
 
-    logging.basicConfig(level=logging.INFO)
-    logger1 = logging.getLogger('')
-    logger1.info(args.mode)
+    # Ugly logging block
+    global logger
+    logger = err_logger(args.log)
+    logger.info(args.mode)
 
+    # What to do here
     if args.mode == 'query':
         loops(krak_conn,ticker_vals,args)
     elif args.mode == 'req':
@@ -66,7 +60,27 @@ def main():
     elif args.mode == 'file':
         analyze(krak_conn)
     elif args.mode == 'tick':
-        q_asset_ticker(krak_conn)
+        q_asset_ticker()
+    elif args.mode == 'all':
+        q_all()
+
+def err_logger(log):
+
+    LEVELS = { 'debug':logging.DEBUG,
+                'info':logging.INFO,
+                'warning':logging.WARNING,
+                'error':logging.ERROR,
+                'critical':logging.CRITICAL,
+                }
+
+    level_name = log
+    level = LEVELS.get(level_name, logging.NOTSET)
+    logging.basicConfig(level=level)
+    logging.getLogger("requests").setLevel(logging.WARNING)
+    logger = logging.getLogger(__name__)
+
+    return logger
+
 
 def calculate(krak_conn,currency,shares):
 
@@ -78,7 +92,9 @@ def calculate(krak_conn,currency,shares):
     print "Price in USD: ", calc_r
 
 
-def q_asset_ticker(krak_conn):
+def q_asset_ticker():
+
+    logger = logging.getLogger('q_asset_ticker')
 
     url = 'https://poloniex.com/public?command=returnTicker'
 
@@ -86,16 +102,14 @@ def q_asset_ticker(krak_conn):
 
     pairs = json.loads(r.text)
 
-    #print pairs['BTC_MYR']
-
-    #pprint(pairs)
-
-    #logger1.debug('Asset TPL: {}'.format(asset_tpl))
+    logger.debug('Asset TPL: {}'.format(pairs))
 
     return pairs
 
 
 def q_asset_pairs():
+
+    logger = logging.getLogger('q_asset_pairs')
 
     url = "https://api.kraken.com/0/public/AssetPairs"
 
@@ -107,7 +121,9 @@ def q_asset_pairs():
 
 def analyze(krak_conn):
 
-    all_pairs = q_asset_ticker(krak_conn)
+    logger = logging.getLogger('__analyze__')
+
+    all_pairs = q_asset_ticker()
     btc_usd = all_pairs['USDT_BTC']['last']
 
 
@@ -128,6 +144,24 @@ def analyze(krak_conn):
                 coinname,all_pairs['{}'.format(coinname)]['last'],
                 shares, val_in_usd
                 )
+
+def q_all():
+
+    logger = logging.getLogger('__qall__')
+
+    all_pairs = q_asset_ticker()
+    btc_usd = all_pairs['USDT_BTC']['last']
+    btc_price = int(btc_usd.split('.')[0])
+
+    for k in all_pairs:
+
+        if 'USD' in k: continue
+        if 'XMR' in k: continue
+
+        currency = all_pairs[k]['last']
+        val_in_usd = float(currency) * int(btc_price)
+
+        print "{:10} {:13} {:04.2f}".format(k,currency,val_in_usd)
 
 
 def loops(krak_conn,ticker_vals,args):
