@@ -1,21 +1,13 @@
 #!/usr/bin/env python
 
 import time
-import krakenex
 import argparse
 import json
 import requests
 import logging
 import csv
-from pprint import pprint
 
 def main():
-
-    try:
-        krak_conn = krakenex.API()
-    except:
-        print "Could not connect"
-        exit(1)
 
     parser = argparse.ArgumentParser(description='Polonix Public Data Display')
 
@@ -47,18 +39,19 @@ def main():
 
     # Ugly logging block
     global logger
-    logger = err_logger(args.log)
-    logger.info(args.mode)
+    if args.log:
+        logger = err_logger(args.log)
+        logger.info(args.mode)
 
     # What to do here
     if args.mode == 'query':
-        loops(krak_conn,ticker_vals,args)
+        loops(args)
     elif args.mode == 'req':
         q_asset_pairs()
     elif args.mode == 'calc':
-        calculate(krak_conn,args.currency,args.shares)
+        calculate(args.currency,args.shares)
     elif args.mode == 'file':
-        analyze(krak_conn)
+        analyze()
     elif args.mode == 'tick':
         q_asset_ticker()
     elif args.mode == 'all':
@@ -73,23 +66,27 @@ def err_logger(log):
                 'critical':logging.CRITICAL,
                 }
 
-    level_name = log
-    level = LEVELS.get(level_name, logging.NOTSET)
-    logging.basicConfig(level=level)
-    logging.getLogger("requests").setLevel(logging.WARNING)
-    logger = logging.getLogger(__name__)
+    if log:
+        level_name = log
+        level = LEVELS.get(level_name, logging.NOTSET)
+        logging.basicConfig(level=level)
+        logging.getLogger("requests").setLevel(logging.WARNING)
+        logger = logging.getLogger(__name__)
+    else:
+        logging.basicConfig(level=logging.NOTSET)
 
     return logger
 
 
-def calculate(krak_conn,currency,shares):
+def calculate(currency,shares):
 
-    xbtc2usd = krak_conn.query_public('Ticker', {'pair':'XXBTZUSD'})
-    btc = xbtc2usd['result']['XXBTZUSD']['a'][0].split('.')[0]
+    all_pairs = q_asset_ticker()
+
+    btc = all_pairs['USDT_BTC']['last'].split('.')[0]
 
     calc_r = (currency * shares) * int(btc)
 
-    print "Price in USD: ", calc_r
+    print "\nPrice in USD: {}  Current BTCUSD: {}\n".format(calc_r,btc)
 
 
 def q_asset_ticker():
@@ -119,31 +116,34 @@ def q_asset_pairs():
 
     pprint(pairs)
 
-def analyze(krak_conn):
+def analyze():
 
     logger = logging.getLogger('__analyze__')
 
     all_pairs = q_asset_ticker()
     btc_usd = all_pairs['USDT_BTC']['last']
 
+    try:
+        with open('asset_list.csv') as fh_csv:
 
-    with open('asset_list.csv') as fh_csv:
+            asset_list = list(csv.reader(fh_csv))
 
-        asset_list = list(csv.reader(fh_csv))
+            print "{:10} {:13} {:12} {}".format(\
+                "Coin","Polo Price","Amount","Dollars")
 
-        print "{:10} {:13} {:12} {}".format(\
-            "Coin","Polo Price","Amount","Dollars")
+            for coinname,shares in asset_list:
 
-        for coinname,shares in asset_list:
+                currency = float(all_pairs['{}'.format(coinname)]['last'])
+                btc_price = int(btc_usd.split('.')[0])
+                val_in_usd = (currency * float(shares)) * btc_price
 
-            currency = float(all_pairs['{}'.format(coinname)]['last'])
-            btc_price = int(btc_usd.split('.')[0])
-            val_in_usd = (currency * float(shares)) * btc_price
+                print "{:10} {:13} {:12} {:04.2f}".format(\
+                    coinname,all_pairs['{}'.format(coinname)]['last'],
+                    shares, val_in_usd
+                    )
 
-            print "{:10} {:13} {:12} {:04.2f}".format(\
-                coinname,all_pairs['{}'.format(coinname)]['last'],
-                shares, val_in_usd
-                )
+    except KeyboardInterrupt:
+        exit(1)
 
 def q_all():
 
@@ -164,26 +164,31 @@ def q_all():
         print "{:10} {:13} {:04.2f}".format(k,currency,val_in_usd)
 
 
-def loops(krak_conn,ticker_vals,args):
+def loops(args):
+
+    logger = logging.getLogger('__loops__')
+
+    all_pairs = q_asset_ticker()
 
     while True:
         try:
 
-            xbtc2usd = krak_conn.query_public('Ticker', {'pair':'XXBTZUSD'})
-            xeth2usd = krak_conn.query_public('Ticker', {'pair':'XETHZUSD'})
+            fmt = "{:10} {:13} {:13} {:13} {:13} {:13} {:13} {:10}"
 
-            btc2usd_ask = xbtc2usd['result']['XXBTZUSD']['a'][0]
-            btc2usd_bid = xbtc2usd['result']['XXBTZUSD']['b'][0]
+            for k in all_pairs:
 
-            eth2usd_ask = xeth2usd['result']['XETHZUSD']['a'][0]
-            eth2usd_bid = xeth2usd['result']['XETHZUSD']['b'][0]
+                basevol = all_pairs[k]['baseVolume']
+                high24 = all_pairs[k]['high24hr']
+                highbid = all_pairs[k]['highestBid']
+                last = all_pairs[k]['last']
+                low24 = all_pairs[k]['low24hr']
+                prcntchg = all_pairs[k]['percentChange']
+                quotevol = all_pairs[k]['quoteVolume']
 
-            print
-            print "BTC2USD ASK: {} -- ETH2USD ASK: {}".format(\
-                btc2usd_ask,eth2usd_ask)
-            print "BTC2USD BID: {} -- ETH2USD BID: {}".format(\
-                btc2usd_bid,eth2usd_bid)
-            print
+                print fmt.format(
+                                k, basevol, high24,highbid,
+                                last,low24,prcntchg,quotevol,
+                                )
 
             if args.inf_loop == False:
                 exit(0)
