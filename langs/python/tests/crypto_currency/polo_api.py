@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
-import time
+import time, datetime
 import argparse
 import json
 import requests
 import logging
 import csv
+from pprint import pprint
 
 def main():
 
@@ -134,7 +135,8 @@ def q_asset_pairs():
 
     pprint(pairs)
 
-def excel_dump(all_pairs,coinname,currency,btc_price,val_in_usd,last_price):
+def excel_dump(all_pairs,coinname,currency,btc_price,val_in_usd,
+                last_price,coins,writer):
 
     basevol = all_pairs[coinname]['baseVolume']
     high24 = all_pairs[coinname]['high24hr']
@@ -143,13 +145,11 @@ def excel_dump(all_pairs,coinname,currency,btc_price,val_in_usd,last_price):
     prcntchg = all_pairs[coinname]['percentChange']
     quotevol = all_pairs[coinname]['quoteVolume']
 
-    with open('analysis.csv','ab+') as fh_out:
-
-        list_all = [coinname,basevol,high24,highbid,
-                    low24,prcntchg,quotevol,currency,
-                    btc_price,val_in_usd,last_price]
-        writer = csv.writer(fh_out)
-        writer.writerow(list_all)
+    list_all = [coinname,basevol,high24,highbid,
+                low24,prcntchg,quotevol,currency,
+                btc_price,val_in_usd,last_price,
+                coins]
+    writer.writerow(list_all)
 
 
 def analyze(args):
@@ -160,8 +160,15 @@ def analyze(args):
     btc_usd = all_pairs['USDT_BTC']['last']
 
     try:
-        with open('asset_list.csv') as fh_csv:
+        with open('asset_list.csv') as fh_csv,\
+                open('analysis.csv','ab+') as fh_out:
 
+            writer = csv.writer(fh_out)
+            header = ["coinname","basevol","high24","highbid",
+                "low24","prcntchg","quotevol","currency","btc_price",
+                "val_in_usd","last_price","cointotal",
+                datetime.datetime.now()]
+            writer.writerow(header)
             asset_list = list(csv.reader(fh_csv))
 
             print "{:10} {:13} {:12} {:8} {}".format(\
@@ -185,8 +192,10 @@ def analyze(args):
                     )
 
                 if args.dump == True:
+
                     excel_dump(all_pairs,coinname,currency,
-                        btc_price,val_in_usd,last_price)
+                        btc_price,val_in_usd,last_price,
+                        shares,writer)
 
     except KeyboardInterrupt:
         exit(1)
