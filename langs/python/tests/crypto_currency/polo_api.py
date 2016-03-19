@@ -12,7 +12,7 @@ def main():
     parser = argparse.ArgumentParser(description='Polonix Public Data Display')
 
     parser.add_argument('-m',dest='mode',action='store',
-                        help='Op mode: Loop, Single, or Asset Pair')
+                        help='Op mode: file, tick, calc or all')
 
     parser.add_argument('-c',dest='currency',action='store',
                         type=float,help='Current price of the currency in BTC')
@@ -23,22 +23,17 @@ def main():
     parser.add_argument('--loop',dest='inf_loop',action='store_true',
                         help='loop mode')
 
-    parser.add_argument('--log',dest='log', help='log mode')
+    parser.add_argument('-d','--dump',dest='dump', action='store_true',
+                        help='dump mode')
 
-    parser.add_argument('-d',dest='debug',action='store_true',
-                        help='debug mode')
+    parser.add_argument('-l','--log',dest='log', help='log mode')
+
+
     args = parser.parse_args()
 
-    supported_asset_pairs = [
-        'XETHXXBT', 'XETHZCAD', 'XETHZEUR', 'XETHZGBP', 'XETHZJPY', 'XETHZUSD',
-        'XLTCZCAD', 'XLTCZEUR', 'XLTCZUSD', 'XXBTXLTC', 'XXBTXNMC', 'XXBTXXDG',
-        'XXBTXXLM', 'XXBTXXRP', 'XXBTZCAD', 'XXBTZEUR', 'XXBTZGBP', 'XXBTZJPY',
-        'XXBTZUSD', 'XXBTZJPY.d', 'XXBTZGBP.d', 'XXBTZEUR.d', 'XXBTZCAD.d',
-        'XXBTZUSD.d',
-        ]
-
     if not args.mode:
-        parser.parser_help()
+        parser.print_help()
+        usage()
 
     # Ugly logging block
     global logger
@@ -47,18 +42,36 @@ def main():
         logger.info(args.mode)
 
     # What to do here
-    if args.mode == 'query':
+    if args.mode == 'tick':
         loops(args)
-    elif args.mode == 'req':
-        q_asset_pairs()
     elif args.mode == 'calc':
-        calculate(args.currency,args.shares)
+        calculate(args)
     elif args.mode == 'file':
-        analyze()
-    elif args.mode == 'tick':
-        q_asset_ticker()
+        analyze(args)
     elif args.mode == 'all':
         q_all()
+
+def usage():
+    print '''
+
+            Ex:
+            # Analyze csv file w two values
+            # Coinname,ShareAmount
+            # with optional dump to file mode
+            polo_api -m file --dump
+
+            # Calculate coins * value in btc
+            polo_api -m calc -s 100 -c 0.01
+
+            # Query all coins and loop (optional)
+            polo_api -m tick --loop
+
+            # Query the price of all and convert
+            # with some constraints (ignore XMR and USD)
+            polo_api -m all
+
+          '''
+
 
 def err_logger(log):
 
@@ -81,7 +94,9 @@ def err_logger(log):
     return logger
 
 
-def calculate(currency,shares):
+def calculate(args):
+
+    (currency,shares) = (args.currency,args.shares)
 
     all_pairs = q_asset_ticker()
 
@@ -121,7 +136,6 @@ def q_asset_pairs():
 
 def excel_dump(all_pairs,coinname,currency,btc_price,val_in_usd,last_price):
 
-
     basevol = all_pairs[coinname]['baseVolume']
     high24 = all_pairs[coinname]['high24hr']
     highbid = all_pairs[coinname]['highestBid']
@@ -138,7 +152,7 @@ def excel_dump(all_pairs,coinname,currency,btc_price,val_in_usd,last_price):
         writer.writerow(list_all)
 
 
-def analyze():
+def analyze(args):
 
     logger = logging.getLogger('__analyze__')
 
@@ -170,8 +184,9 @@ def analyze():
                     shares, val_in_usd,price_of_one,
                     )
 
-                excel_dump(all_pairs,coinname,currency,
-                    btc_price,val_in_usd,last_price)
+                if args.dump == True:
+                    excel_dump(all_pairs,coinname,currency,
+                        btc_price,val_in_usd,last_price)
 
     except KeyboardInterrupt:
         exit(1)
