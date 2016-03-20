@@ -6,6 +6,8 @@ import json
 import requests
 import logging
 import csv
+import urllib, urllib2
+import hmac,hashlib
 from pprint import pprint
 
 def main():
@@ -26,6 +28,9 @@ def main():
 
     parser.add_argument('-d','--dump',dest='dump', action='store_true',
                         help='dump mode')
+
+    parser.add_argument('--key',dest='key', help='dump mode')
+    parser.add_argument('--secret',dest='secret', help='dump mode')
 
     parser.add_argument('-l','--log',dest='log', help='log mode')
 
@@ -51,6 +56,8 @@ def main():
         analyze(args)
     elif args.mode == 'all':
         q_all()
+    elif args.mode == 'priv':
+        priv_api_query(args)
 
 def usage():
     print '''
@@ -70,6 +77,9 @@ def usage():
             # Query the price of all and convert
             # with some constraints (ignore XMR and USD)
             polo_api -m all
+
+            # Priv check balances test
+            polo_api -m priv
 
           '''
 
@@ -94,6 +104,41 @@ def err_logger(log):
 
     return logger
 
+def api_access(args):
+    with open(args.key) as a_key, open(args.secret) as a_secret:
+        api_key = a_key.read()
+        api_secret = a_secret.read()
+        return api_key.strip(), api_secret.strip()
+
+def priv_api_query(args,req={}):
+
+    req['command'] = 'returnBalances'
+    req['nonce'] = int(time.time()*1000)
+    post_data = urllib.urlencode(req)
+
+    print req
+    #(api_key,api_secret) = api_access(args)
+    #key = api_key
+    #secret = api_secret
+
+    with open(args.key) as a_key, open(args.secret) as a_secret:
+        api_key = a_key.read()
+        api_secret = a_secret.read()
+
+        sign = hmac.new(api_secret, post_data, hashlib.sha512).hexdigest()
+
+        headers = {
+            'Sign' : sign,
+            'Key' : api_key
+        }
+
+        url = 'https://poloniex.com/tradingApi'
+
+        r = requests.post(url, data=req, headers=headers)
+
+        json_req = json.loads(r.content)
+
+        pprint(json_req)
 
 def calculate(args):
 
