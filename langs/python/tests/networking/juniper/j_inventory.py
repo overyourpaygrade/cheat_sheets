@@ -63,15 +63,16 @@ with open('inventory.json') as j_file, open('inventory.xml') as f_xml:
                     for y in sorted(v_inv_opt.keys()):
                         if k_template in y:
                             print "\tPIC: {}".format(k_template)
+                            print "{}".format(j_template[template_item]['ports'])
 
                             for n in j_template[template_item][k_template]:
                                 match = 0
                                 for m in v_inv_opt[y]:
                                     if n in m:
-                                        print "\t\t{} - {}".format(n, m)
+                                        print "\t\t{}/{} - {}".format(k_template,n,m)
                                         match = 1
                                 if match == 0:
-                                    print "\t\t{} - {}".format(n,"Free")
+                                    print "\t\t{}/{} - {}".format(k_template,n,"Free")
                             print
 
 
