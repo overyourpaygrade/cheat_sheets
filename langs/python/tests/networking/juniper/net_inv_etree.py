@@ -93,27 +93,25 @@ with open('inventory.yml','rb') as f_yaml, open('inventory.xml') as f_xml:
     #print pprint(dict(inventory_opt))
 
     with open('inventory.json') as j_file:
-        j = json.load(j_file)
+        j_template = json.load(j_file)
 
-        for k,v in sorted(inventory_opt.iteritems()):
+        for k_inv_opt,v_inv_opt in sorted(inventory_opt.iteritems()):
 
-            model = inventory_opt[k]['model']
-            print "FPC: {} -- {}\n".format(k,model)
+            fpc_model = inventory_opt[k_inv_opt]['model']
+            print "FPC: {} -- {}\n".format(k_inv_opt,model)
 
-            for key in j:
+            for template_item in j_template:
 
-                if key in model:
+                if template_item in fpc_model:
 
-                    for x in sorted(j[key].keys()):
-                        for y in sorted(v.keys()):
-                            if x in y:
-                                print "\tPIC: {}".format(x)
-                                #print j[key][x]
-                                #print v[y]
+                    for k_template in sorted(j_template[template_item].keys()):
+                        for y in sorted(v_inv_opt.keys()):
+                            if k_template in y:
+                                print "\tPIC: {}".format(k_template)
 
-                                for n in j[key][x]:
+                                for n in j_template[template_item][k_template]:
                                     match = 0
-                                    for m in v[y]:
+                                    for m in v_inv_opt[y]:
                                         if n in m:
                                             print "\t\t{} - {}".format(n, m)
                                             match = 1
