@@ -5,9 +5,11 @@ import lxml.etree as ET
 from collections import defaultdict
 from pprint import pprint
 
-with open('inventory.json') as j_file, open('inventory.xml') as f_xml:
+with open('inventory.json') as j_file, open('inventory.xml') as f_xml,\
+        open('live_data.json') as l_file:
 
     j_template = json.load(j_file)
+    live_data = json.load(l_file)
 
     tree = ET.parse(f_xml)
     root = tree.getroot()
@@ -46,8 +48,8 @@ with open('inventory.json') as j_file, open('inventory.xml') as f_xml:
         inventory_opt[fpc_num][pic_num].append(intf)
 
     #Merge dictionaries
-    for ky,vl in inventory_fpc.iteritems():
-        inventory_opt.get(ky, {}).update(vl)
+    for key,val in inventory_fpc.iteritems():
+        inventory_opt.get(key, {}).update(val)
 
     #Go through the merged dictionary
     for k_inv_opt,v_inv_opt in sorted(inventory_opt.iteritems()):
@@ -59,20 +61,35 @@ with open('inventory.json') as j_file, open('inventory.xml') as f_xml:
 
             if template_item in fpc_model:
 
-                for k_template in sorted(j_template[template_item].keys()):
-                    for y in sorted(v_inv_opt.keys()):
-                        if k_template in y:
-                            print "\tPIC: {}".format(k_template)
-                            print "{}".format(j_template[template_item]['ports'])
+                for tmpl_pic in sorted(j_template[template_item].keys()):
+                    for inv_pic in sorted(v_inv_opt.keys()):
+                        if inv_pic in tmpl_pic:
 
-                            for n in j_template[template_item][k_template]:
+                            speed = j_template[template_item][tmpl_pic]['speed']
+                            print "\tPIC: {} Speed: {}".format(tmpl_pic,speed)
+
+                            for tmpl_ports in j_template[template_item][tmpl_pic]['ports']:
                                 match = 0
-                                for m in v_inv_opt[y]:
-                                    if n in m:
-                                        print "\t\t{}/{} - {}".format(k_template,n,m)
+                                for inv_ports in v_inv_opt[inv_pic]:
+                                    if inv_ports in tmpl_ports:
+                                        print "\t\t{}/{} - {}/{}".format(\
+                                            tmpl_pic,tmpl_ports,tmpl_pic,inv_ports)
                                         match = 1
                                 if match == 0:
-                                    print "\t\t{}/{} - {}".format(k_template,n,"Free")
+                                    print "\t\t{}/{} - {}".format(\
+                                        tmpl_pic,tmpl_ports,"Free")
                             print
 
-
+'''
+Should look somethin like this:
+{
+    "FPC" {
+        "0" : {
+            "0/0/0" : {
+                "status" : "up",
+                "present" : "yes"
+                      }
+              }
+          }
+}
+'''
