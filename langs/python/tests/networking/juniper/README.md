@@ -38,7 +38,7 @@ FPC: 1 -- MPC-3D-16XGE-SFPP-X
 
 inventory_opt (merged)
 
-```json
+```
 {
     '0': {
         '0': ['0/0', '0/1'],
@@ -57,7 +57,7 @@ inventory_opt (merged)
 
 inventory_fpc
 
-```json
+```
 {
     '0': {
         'model': 'MPC-3D-16XGE-SFPP-X', 
@@ -72,7 +72,7 @@ inventory_fpc
 
 inventory_opt
 
-```json
+```
 {
     '0': {
         '0': ['0/0', '0/1']},
