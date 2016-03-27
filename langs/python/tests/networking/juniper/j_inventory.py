@@ -33,20 +33,36 @@ with open('inventory.json') as j_file, open('inventory.xml') as f_xml,\
             inventory_fpc[slot].update( { 'serial' : serial } )
 
     # Go through sub sub modules and 
+    # If option is sub-sub-sub it will only parse that which has MIC
     for optic in root.findall('.//{}chassis-sub-sub-module'.format(namespace)):
         #serial = optic.find('{0}serial-number'.format(namespace)).text
         #description = optic.find('{0}description'.format(namespace)).text
         name = optic.find('{0}name'.format(namespace)).text
         pic = optic.getparent().find('{0}name'.format(namespace)).text
-        fpc = optic.getparent().getparent().find('{0}name'.format(namespace)).text
+        fpc = optic.getparent().getparent().find(\
+                            '{0}name'.format(namespace)).text
         fpc_mod = optic.getparent().getparent().find(\
-            '{0}model-number'.format(namespace)).text
+                            '{0}model-number'.format(namespace)).text
         intf = pic.split(" ")[1] +"/"+name.split(" ")[1]
         fpc_num = fpc.split(' ')[1]
         pic_num = pic.split(' ')[1]
 
         inventory_opt[fpc_num].setdefault(pic_num, [])
         inventory_opt[fpc_num][pic_num].append(intf)
+
+        if 'PIC' in name:
+            for hey in optic.findall('{0}chassis-sub-sub-sub-module'.format(\
+                                     namespace)):
+                xcvr = hey.find('{}name'.format(namespace)).text
+                m_pic = hey.getparent().find('{}name'.format(namespace)).text
+                m_mic = hey.getparent().getparent().find('{}name'.format(namespace)).text
+                m_fpc = hey.getparent().getparent().getparent().find(\
+                            '{}name'.format(namespace)).text
+
+                #print xcvr, m_pic, m_mic, m_fpc
+
+    #pprint(inventory_fpc)
+    #pprint(inventory_opt)
 
     #Merge dictionaries
     for key,val in inventory_fpc.iteritems():
@@ -55,10 +71,10 @@ with open('inventory.json') as j_file, open('inventory.xml') as f_xml,\
     #Go through the merged dictionary
     for k_inv_opt,v_inv_opt in sorted(inventory_opt.iteritems()):
 
-        fpc_model = inventory_opt[k_inv_opt]['model']
-        print "FPC: {} -- {}\n".format(k_inv_opt,model)
+        print "FPC: {} -- {}\n".format(k_inv_opt,inventory_opt[k_inv_opt]['model'])
 
         for template_item in j_template:
+            fpc_model = inventory_opt[k_inv_opt]['model']
 
             if template_item in fpc_model:
 
