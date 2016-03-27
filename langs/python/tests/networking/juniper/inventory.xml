@@ -117,6 +117,37 @@
                 </chassis-sub-module>
             </chassis-module>
             <chassis-module>
+                <name>FPC 2</name>
+                <version>REV 22</version>
+                <part-number>750-026468</part-number>
+                <serial-number>CW0213093063</serial-number>
+                <description>EX2200-24T-4G</description>
+                <clei-code>COMXZ10BRA</clei-code>
+                <model-number>MPC-3D-16XGE-MIC</model-number>
+                <chassis-sub-module>
+                    <name>CPU</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>FPC CPU</description>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>MIC 0</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>24x 10/100/1000 Base-T</description>
+                    <chassis-sub-sub-module>
+                        <name>PIC 0</name>
+                        <part-number>BUILTIN</part-number>
+                        <serial-number>BUILTIN</serial-number>
+                        <chassis-sub-sub-sub-module>
+                            <name>Xcvr 0</name>
+                        </chassis-sub-sub-sub-module>
+                    </chassis-sub-sub-module>
+                    <clei-code>COMXZ10BRA</clei-code>
+                    <model-number>EX2200-24T-4G</model-number>
+                </chassis-sub-module>
+            </chassis-module>
+            <chassis-module>
                 <name>Power Supply 0</name>
                 <description>PS 100W AC</description>
             </chassis-module>
