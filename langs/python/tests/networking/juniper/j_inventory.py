@@ -39,7 +39,8 @@ with open('inventory.json') as j_file, open('inventory.xml') as f_xml,\
         name = optic.find('{0}name'.format(namespace)).text
         pic = optic.getparent().find('{0}name'.format(namespace)).text
         fpc = optic.getparent().getparent().find('{0}name'.format(namespace)).text
-        fpc_mod = optic.getparent().getparent().find('{0}model-number'.format(namespace)).text
+        fpc_mod = optic.getparent().getparent().find(\
+            '{0}model-number'.format(namespace)).text
         intf = pic.split(" ")[1] +"/"+name.split(" ")[1]
         fpc_num = fpc.split(' ')[1]
         pic_num = pic.split(' ')[1]
