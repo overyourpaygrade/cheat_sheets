@@ -1,0 +1,12 @@
+{
+    "interface" : {
+        "xe-0/0/0" : {
+            "lstatus" : "adminup",
+            "istatus" : "up"
+        },
+        "et-1/1/1" : {
+            "lstatus" : "adminup",
+            "istatus" : "down"
+        }
+    }
+}
