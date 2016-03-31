@@ -23,3 +23,11 @@
 
 ###### Good color file
 * Tomorrow-Night-Eighties.vim
+
+###### Multiple Windows
+```
+ :e filename      - edit another file
+ :split filename  - split window and load another file
+ ctrl-w up arrow  - move cursor up a window
+ ctrl-w ctrl-w    - move cursor to another window (cycle)
+```
