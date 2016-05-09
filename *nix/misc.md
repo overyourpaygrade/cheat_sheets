@@ -38,3 +38,8 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 ###### history bash
 * export PROMPT_COMMAND='history -a'
 
+###### Remove sudo privileges from user
+`sudo deluser username sudo`
+
+###### Add sudo privileges to user
+`gpasswd -a username sudo`
