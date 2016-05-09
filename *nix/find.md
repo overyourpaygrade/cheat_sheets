@@ -87,3 +87,6 @@
 
 ###### Find all SUID Root files
 * find / -uid 0 -perm -4000 2>/dev/null
+
+###### Find larger than 10MB
+`find . -type f -size +10000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'`
