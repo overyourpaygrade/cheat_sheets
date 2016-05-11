@@ -1,0 +1,27 @@
+---
+- hosts: all
+  vars:
+
+    local_home: "{{ lookup('env','HOME') }}"
+
+  tasks:
+    - name: print to stdout
+      script: /tmp/environ.py
+      #command: echo "hello"
+      #shell : /tmp/environ.py
+      register: hello
+
+    - set_fact:
+       loc_home: "{{ lookup('env','ANSIBLE') }}"
+
+    - debug: var=loc_home
+
+    - name: set fact
+      set_fact: hello_out="{{hello.stdout}}"
+
+    - debug: var=hello_out
+
+    - debug: msg="{{ hello.stdout }}"
+    
+    - debug: msg="{{ hello.stderr }}"
+
