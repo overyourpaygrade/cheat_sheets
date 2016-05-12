@@ -43,3 +43,11 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 ###### Add sudo privileges to user
 `gpasswd -a username sudo`
+
+###### Public IP address
+`wget http://ipinfo.io/ip -qO -`
+
+###### Kill by pattern
+`pkill -f my_pattern`
+
+
