@@ -50,4 +50,5 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 ###### Kill by pattern
 `pkill -f my_pattern`
 
-
+###### Find CPU Information / Speed
+`cat /proc/cpuinfo`
